@@ -21,8 +21,8 @@ class IsAdmin
         if (auth()->user()->role == 'admin') {
             return $next($request);
         }
-        return response()->json($this->getForbidden(), [
+        return response()->json([
             'message' => 'Endpoint not allowed'
-        ]);
+        ], $this->getForbidden());
     }
 }
