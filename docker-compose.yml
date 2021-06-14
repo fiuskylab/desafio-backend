@@ -1,11 +1,11 @@
-version: '3'
+version: "3.9"
 services:
   app:
     build:
       context: .
-      dockerfile: .docker/apache2/Dockerfile
-    image: seller-controller
-    container_name: seller-controller
+      dockerfile: .docker/php/Dockerfile
+    image: ${APP_CONTAINER_NAME}
+    container_name: ${APP_CONTAINER_NAME}
     restart: always
     ports:
       - "${APP_PORT}:80"
@@ -22,7 +22,7 @@ services:
     environment:
         - PGDATA=${DB_DATA}
         - POSTGRES_DB=${DB_DATABASE}
-        - POSTGRES_USER=${DB_USER}
+        - POSTGRES_USER=${DB_USERNAME}
         - POSTGRES_PASSWORD=${DB_PASSWORD}
   redis:
     build:
@@ -30,5 +30,5 @@ services:
         dockerfile: .docker/redis/Dockerfile
     ports:
         - "${REDIS_PORT}:${REDIS_PORT}"
-    image: ${REDIS_NAME}
-    container_name: ${REDIS_NAME}
+    image: ${REDIS_CONTAINER_NAME}
+    container_name: ${REDIS_CONTAINER_NAME}
