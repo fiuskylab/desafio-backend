@@ -1,5 +1,5 @@
-# PHP 7.4 (to work with Laravel 8)
-FROM php:7.4-apache
+# PHP 8.0 (to work with Laravel 8)
+FROM php:8.0-apache
 
 USER root
 
@@ -31,5 +31,3 @@ RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/loca
 
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
-
-RUN chmod -R 777 /var/www/html/storage /var/www/html/storage/*
